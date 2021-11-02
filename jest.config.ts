@@ -1,7 +1,16 @@
 export default {
   clearMocks: true,
   collectCoverage: false,
-  collectCoverageFrom: ['<rootDir>/src/**', '!<rootDir>/src/index.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**',
+    '!<rootDir>/src/index.ts',
+    '!<rootDir>/src/utils/logger.ts',
+    '!<rootDir>/src/@types/**',
+    '!<rootDir>/src/prisma/**',
+    '!<rootDir>/src/config/**',
+    '!<rootDir>/src/email/**',
+    '!<rootDir>/src/router/**'
+  ],
   coveragePathIgnorePatterns: ['/node_modules/'],
   coverageProvider: 'v8',
   coverageReporters: ['json', 'text', 'lcov', 'clover'],
