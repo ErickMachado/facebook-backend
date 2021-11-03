@@ -20,6 +20,7 @@
                   "email": "john.doe@mail.com",
                   "name": "Jonh Doe",
                   "username": "john_doe",
+                  "redirectLink": "https://facebook.com",
                   "password": "12345678"
                 },
                 "properties": {
@@ -35,6 +36,11 @@
                   },
                   "password": {
                     "description": "The account password. It will be used for authentication. Should contain at last 8 characteres",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "redirectLink": {
+                    "description": "The link to the front-end page that will be sending in e-mail.",
                     "required": true,
                     "type": "string"
                   },
