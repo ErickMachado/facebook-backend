@@ -39,12 +39,13 @@ class CreateProfileService {
     }
 
     if (!isEmailValid(profile.email)) {
-      throw new APIError('Invalid param: e-mail')
+      throw new APIError('Invalid param: email')
     }
 
     if (profile.password.length < 8) {
       throw new APIError('Password should have at last 8 characters')
     }
+
     if (!redirectLink) throw new APIError('Missing param: redirectLink')
 
     const emailAlreadyExists = await prisma.profile.findFirst({
