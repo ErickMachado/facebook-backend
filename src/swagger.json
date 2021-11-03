@@ -9,6 +9,48 @@
   },
   "openapi": "3.0.0",
   "paths": {
+    "/auth": {
+      "post": {
+        "description": "Authenticate user and redirect to application",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "email": "john.doe@mail.com",
+                  "password": "12345678"
+                },
+                "properties": {
+                  "email": {
+                    "description": "Previously registered account email",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "password": {
+                    "description": "Account password",
+                    "required": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "summary": "Authenticate",
+        "tags": ["Authentication"]
+      }
+    },
     "/profiles": {
       "post": {
         "description": "Create a new profile",
@@ -61,7 +103,7 @@
             "description": "Created"
           },
           "400": {
-            "description": "Missing or invalid param"
+            "description": "Bad request"
           },
           "500": {
             "description": "Internal server error"
