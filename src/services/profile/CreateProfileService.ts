@@ -4,6 +4,7 @@ import nodemailer from 'nodemailer'
 import path from 'path'
 import { prisma } from '@/prisma'
 import { APIError } from '@/errors/APIError'
+import { isEmailValid } from '@/validators'
 
 interface ICreatePayload {
   readonly email: string
@@ -35,6 +36,10 @@ class CreateProfileService {
       if (!profile[param as keyof ICreatePayload]) {
         throw new APIError(`Missing param: ${param}`)
       }
+    }
+
+    if (!isEmailValid(profile.email)) {
+      throw new APIError('Invalid param: e-mail')
     }
 
     if (profile.password.length < 8) {
