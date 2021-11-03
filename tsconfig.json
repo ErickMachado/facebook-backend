@@ -13,7 +13,8 @@
     },
     "types": ["@types/node", "@types/jest"],
     "importHelpers": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules", "tests/**/*.spec.ts"],
   "include": ["src/**/*"]

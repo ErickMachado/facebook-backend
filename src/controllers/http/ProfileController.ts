@@ -3,13 +3,10 @@ import { CreateProfileService } from '@/services/profile'
 
 class ProfileController {
   public async store(request: Request, response: Response) {
-    const { bio, city, email, name, password, redirectLink, username } =
-      request.body
+    const { email, name, password, redirectLink, username } = request.body
 
     await CreateProfileService.execute(
       {
-        bio,
-        city,
         email,
         name,
         password,

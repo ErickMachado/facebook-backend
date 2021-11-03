@@ -1,0 +1,68 @@
+{
+  "info": {
+    "contact": {
+      "email": "erick.gsmachado@gmail.com"
+    },
+    "description": "This is the docs for the Facebook API clone made with Node.js.",
+    "title": "Facebook API documentation",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/profiles": {
+      "post": {
+        "description": "Create a new profile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "email": "john.doe@mail.com",
+                  "name": "Jonh Doe",
+                  "username": "john_doe",
+                  "password": "12345678"
+                },
+                "properties": {
+                  "email": {
+                    "description": "The e-mail that will be used for authentication.",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "The account owner name.",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "password": {
+                    "description": "The account password. It will be used for authentication. Should contain at last 8 characteres",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "username": {
+                    "description": "The account alias. It is unique for each user.",
+                    "required": true,
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "tags": ["Profile"],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Missing or invalid param"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "summary": "Create a profile"
+      }
+    }
+  }
+}

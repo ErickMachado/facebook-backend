@@ -9,6 +9,7 @@ datasource db {
 
 model Profile {
   id         String    @id @unique @default(uuid())
+  avatar_url String?
   bio        String?
   city       String?
   email      String    @unique

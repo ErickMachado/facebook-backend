@@ -2,14 +2,17 @@ import 'dotenv/config'
 import 'express-async-errors'
 import cors from 'cors'
 import express, { Request, Response, NextFunction } from 'express'
+import swaggerUI from 'swagger-ui-express'
 import logger from '@/utils/logger'
 import { corsConfig } from '@/config/cors'
 import { APIError } from '@/errors/APIError'
 import router from '@/routes'
+import swaggerFile from '@/swagger.json'
 
 const server = express()
 server.use(cors(corsConfig))
 server.use(express.json())
+server.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerFile))
 server.use(router)
 server.use(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

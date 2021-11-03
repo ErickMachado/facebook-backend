@@ -1,6 +1,7 @@
 -- CreateTable
 CREATE TABLE "profiles" (
     "id" TEXT NOT NULL,
+    "avatar_url" TEXT,
     "bio" TEXT,
     "city" TEXT,
     "email" TEXT NOT NULL,

@@ -6,8 +6,6 @@ import { prisma } from '@/prisma'
 import { APIError } from '@/errors/APIError'
 
 interface ICreatePayload {
-  readonly bio?: string
-  readonly city?: string
   readonly email: string
   readonly name: string
   readonly password: string
@@ -39,6 +37,9 @@ class CreateProfileService {
       }
     }
 
+    if (profile.password.length < 8) {
+      throw new APIError('Password should have at last 8 characters')
+    }
     if (!redirectLink) throw new APIError('Missing param: redirectLink')
 
     const emailAlreadyExists = await prisma.profile.findFirst({
