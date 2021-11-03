@@ -1,7 +1,8 @@
 import { Request, Response } from 'express'
 import { CreateProfileService } from '@/services/profile'
+import { IBaseController } from '@/@types/controller'
 
-class ProfileController {
+class ProfileController implements IBaseController {
   public async store(request: Request, response: Response) {
     const { email, name, password, redirectLink, username } = request.body
 

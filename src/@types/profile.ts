@@ -1,4 +1,5 @@
 export interface IProfile {
+  readonly avatar_url?: string
   readonly bio?: string
   readonly city?: string
   readonly created_at: string
