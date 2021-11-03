@@ -53,9 +53,9 @@
     "migrate:test": "dotenv -e .env.test -- npx prisma migrate dev --name postgres-init",
     "migrate:reset:test": "dotenv -e .env.test -- npx prisma migrate reset",
     "seed:test": "dotenv -e .env.test -- npx prisma db seed",
-    "test": "jest --passWithNoTests --runInBand",
+    "test": "dotenv -e .env.test -- jest --passWithNoTests --runInBand",
     "test:watch": "dotenv -e .env.test -- npx jest --watchAll",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "dotenv -e .env.test -- jest --coverage",
     "prepare": "husky install"
   },
   "version": "1.0.0"

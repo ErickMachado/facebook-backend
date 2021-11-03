@@ -4,8 +4,8 @@ import { prisma } from '@/prisma'
 import { APIError } from '@/errors/APIError'
 
 interface ISignInPayload {
-  email: string
-  password: string
+  readonly email: string
+  readonly password: string
 }
 
 class SignInService {
@@ -17,7 +17,7 @@ class SignInService {
 
     const profileExists = await prisma.profile.findFirst({ where: { email } })
 
-    if (!profileExists) throw new APIError('Incorrect e-mail or password', 401)
+    if (!profileExists) throw new APIError('Incorrect email or password', 401)
 
     const isPasswordCorrect = await bcrypt.compare(
       password,
@@ -25,7 +25,7 @@ class SignInService {
     )
 
     if (!isPasswordCorrect)
-      throw new APIError('Incorrect e-mail or password', 401)
+      throw new APIError('Incorrect email or password', 401)
 
     const profileWithoutPassword = await prisma.profile.findFirst({
       select: {

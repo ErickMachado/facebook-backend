@@ -10,7 +10,7 @@ interface ICreatePayload {
   username?: string
 }
 
-describe('CreateProfileService.ts', () => {
+describe('Profile creation service', () => {
   let requestMock: ICreatePayload
 
   beforeEach(() => {
