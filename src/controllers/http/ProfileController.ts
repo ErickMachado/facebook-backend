@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { CreateProfileService } from '@/services/profile'
+import { CreateProfileService, UpdateProfileService } from '@/services/profile'
 import { IBaseController } from '@/@types/controller'
 
 class ProfileController implements IBaseController {
@@ -17,6 +17,18 @@ class ProfileController implements IBaseController {
     )
 
     return response.sendStatus(201)
+  }
+
+  public async update(request: Request, response: Response) {
+    const { profile_id } = request
+    const { bio, city } = request.body
+
+    const updatedProfile = await UpdateProfileService.execute(
+      { bio, city },
+      profile_id
+    )
+
+    return response.status(200).json(updatedProfile)
   }
 }
 
