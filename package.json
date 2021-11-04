@@ -7,6 +7,7 @@
     "@types/faker": "^5.5.9",
     "@types/jest": "^27.0.2",
     "@types/jsonwebtoken": "^8.5.5",
+    "@types/multer": "^1.4.7",
     "@types/node": "^16.11.6",
     "@types/nodemailer": "^6.4.4",
     "@types/supertest": "^2.0.11",
@@ -32,12 +33,14 @@
   "dependencies": {
     "@prisma/client": "^3.3.0",
     "bcrypt": "^5.0.1",
+    "cloudinary": "^1.27.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.3",
     "nodemailer": "^6.7.0",
     "pino": "^7.0.5",
     "pino-pretty": "^7.1.0"
@@ -49,7 +52,7 @@
     "seed": "dotenv -e .env.test -- npx ts-node prisma/seed.ts"
   },
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --clear --exit-child src/index.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --files --respawn --clear --exit-child src/index.ts",
     "migrate:test": "dotenv -e .env.test -- npx prisma migrate dev --name postgres-init",
     "migrate:reset:test": "dotenv -e .env.test -- npx prisma migrate reset",
     "seed:test": "dotenv -e .env.test -- npx prisma db seed",

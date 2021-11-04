@@ -12,10 +12,9 @@
       "@tests/*": ["./tests/*"]
     },
     "types": ["@types/node", "@types/jest"],
+    "typeRoots": ["node_modules/@types", "src/@types"],
     "importHelpers": true,
     "experimentalDecorators": true,
     "resolveJsonModule": true
-  },
-  "exclude": ["node_modules", "tests/**/*.spec.ts"],
-  "include": ["src/**/*"]
+  }
 }

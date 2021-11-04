@@ -29,7 +29,7 @@ class SignInService {
 
     const profileWithoutPassword = await prisma.profile.findFirst({
       select: {
-        avatar_url: true,
+        avatar: true,
         bio: true,
         city: true,
         created_at: true,

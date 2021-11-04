@@ -9,7 +9,7 @@ datasource db {
 
 model Profile {
   id         String    @id @unique @default(uuid())
-  avatar_url String?
+  avatar     Avatar?
   bio        String?
   city       String?
   email      String    @unique
@@ -21,4 +21,16 @@ model Profile {
   updated_at DateTime  @default(now())
 
   @@map("profiles")
+}
+
+model Avatar {
+  id         String   @id @unique @default(uuid())
+  public_id  String   @unique
+  url        String
+  profile    Profile  @relation(fields: [profile_id], references: [id], onDelete: Cascade)
+  profile_id String   @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  @@map("avatars")
 }
