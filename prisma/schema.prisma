@@ -8,17 +8,18 @@ datasource db {
 }
 
 model Profile {
-  id         String    @id @unique @default(uuid())
-  avatar     Avatar?
-  bio        String?
-  city       String?
-  email      String    @unique
-  name       String
-  username   String    @unique
-  password   String
-  verified   DateTime?
-  created_at DateTime  @default(now())
-  updated_at DateTime  @default(now())
+  id           String        @id @unique @default(uuid())
+  avatar       Avatar?
+  bio          String?
+  city         String?
+  email        String        @unique
+  name         String
+  username     String        @unique
+  password     String
+  verified     DateTime?
+  publications Publication[]
+  created_at   DateTime      @default(now())
+  updated_at   DateTime      @default(now())
 
   @@map("profiles")
 }
@@ -33,4 +34,17 @@ model Avatar {
   updated_at DateTime @default(now())
 
   @@map("avatars")
+}
+
+model Publication {
+  id              String   @id @unique @default(uuid())
+  subtitle        String?
+  image_url       String?
+  image_public_id String?
+  author          Profile  @relation(fields: [author_id], references: [id], onDelete: Cascade)
+  author_id       String
+  created_at      DateTime @default(now())
+  updated_at      DateTime @default(now())
+
+  @@map("publications")
 }

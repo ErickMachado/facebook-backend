@@ -10,8 +10,20 @@ class UpdateProfileService {
         bio: bio || null,
         city: city || null
       },
-      include: {
-        avatar: true
+      select: {
+        avatar: {
+          select: {
+            url: true
+          }
+        },
+        bio: true,
+        city: true,
+        created_at: true,
+        email: true,
+        id: true,
+        name: true,
+        publications: true,
+        username: true
       },
       where: { id: profile_id }
     })
