@@ -52,6 +52,32 @@
       }
     },
     "/profiles": {
+      "get": {
+        "description": "Get one profile with all publications",
+        "parameters": [
+          {
+            "description": "A profile uuid",
+            "example": "/profiles/a53a8ac3-7c98-4480-bc2c-e308304cf0c1",
+            "in": "route",
+            "name": "id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Get one profile",
+        "tags": ["Profile"]
+      },
       "post": {
         "description": "Create a new profile",
         "requestBody": {
@@ -261,8 +287,10 @@
         "parameters": [
           {
             "description": "The profile name",
+            "example": "/search?name=john+doe",
             "in": "query",
-            "name": "search",
+            "name": "name",
+            "required": true,
             "type": "string"
           }
         ],

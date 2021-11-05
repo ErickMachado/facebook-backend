@@ -4,6 +4,7 @@ import { auth } from '@/middlewares'
 
 const profilesRoute = Router()
 
+profilesRoute.get('/profiles/:id', auth, ProfileController.show)
 profilesRoute.post('/profiles', ProfileController.store)
 profilesRoute.patch('/profiles', auth, ProfileController.update)
 profilesRoute.delete('/profiles', auth, ProfileController.delete)

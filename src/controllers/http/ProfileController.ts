@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import {
   CreateProfileService,
+  FindOneProfileService,
   DeleteProfileService,
   UpdateProfileService
 } from '@/services/profile'
@@ -13,6 +14,14 @@ class ProfileController implements IBaseController {
     await DeleteProfileService.execute(profile_id)
 
     return response.sendStatus(200)
+  }
+
+  public async show(request: Request, response: Response) {
+    const { id } = request.params
+
+    const profile = await FindOneProfileService.execute(id)
+
+    return response.status(200).json(profile)
   }
 
   public async store(request: Request, response: Response) {
