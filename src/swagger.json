@@ -154,6 +154,23 @@
         "security": [{ "bearerAuth": [] }],
         "summary": "Update profile informations",
         "tags": ["Profile"]
+      },
+      "delete": {
+        "description": "Delete a profile and all related publications, comments and likes",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Delete a profile",
+        "tags": ["Profile"]
       }
     },
     "/avatars": {
