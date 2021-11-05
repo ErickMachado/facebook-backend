@@ -6,5 +6,6 @@ const profilesRoute = Router()
 
 profilesRoute.post('/profiles', ProfileController.store)
 profilesRoute.patch('/profiles', auth, ProfileController.update)
+profilesRoute.delete('/profiles', auth, ProfileController.delete)
 
 export default profilesRoute

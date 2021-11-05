@@ -1,8 +1,20 @@
 import { Request, Response } from 'express'
-import { CreateProfileService, UpdateProfileService } from '@/services/profile'
+import {
+  CreateProfileService,
+  DeleteProfileService,
+  UpdateProfileService
+} from '@/services/profile'
 import { IBaseController } from '@/@types/controller'
 
 class ProfileController implements IBaseController {
+  public async delete(request: Request, response: Response) {
+    const { profile_id } = request
+
+    await DeleteProfileService.execute(profile_id)
+
+    return response.sendStatus(200)
+  }
+
   public async store(request: Request, response: Response) {
     const { email, name, password, redirectLink, username } = request.body
 
