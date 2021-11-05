@@ -110,6 +110,50 @@
           }
         },
         "summary": "Create a profile"
+      },
+      "patch": {
+        "description": "Update profile informations",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "bio": "Nature lover",
+                  "city": "São José dos Campos"
+                },
+                "properties": {
+                  "bio": {
+                    "description": "The profile bio that will be displayed",
+                    "required": false,
+                    "type": "string"
+                  },
+                  "city": {
+                    "description": "The profile owner city",
+                    "required": false,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Update profile informations",
+        "tags": ["Profile"]
       }
     },
     "/avatars": {
@@ -145,6 +189,53 @@
         },
         "summary": "Update the profile avatar",
         "tags": ["Avatar"]
+      }
+    },
+    "/publications": {
+      "post": {
+        "description": "Create a new publication",
+        "requestBody": {
+          "content": {
+            "multipart/formData": {
+              "schema": {
+                "example": {
+                  "image": "string",
+                  "subtitle": "42 is the answer for everything"
+                },
+                "properties": {
+                  "image": {
+                    "description": "The image that will be displayed in the publication",
+                    "format": "binary",
+                    "required": false,
+                    "type": "string"
+                  },
+                  "subtitle": {
+                    "description": "The subtitle that will be displayed in the publication",
+                    "required": false,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Create a publication",
+        "tags": ["Publication"]
       }
     }
   }
