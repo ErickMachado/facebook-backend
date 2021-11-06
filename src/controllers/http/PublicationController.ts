@@ -2,7 +2,8 @@ import { Request, Response } from 'express'
 import { IBaseController } from '@/@types/controller'
 import {
   CreatePublicationService,
-  ListPublicationsService
+  ListPublicationsService,
+  UpdatePublicationService
 } from '@/services/publications'
 
 class PublicationController implements IBaseController {
@@ -23,6 +24,20 @@ class PublicationController implements IBaseController {
     })
 
     return response.status(201).json(publication)
+  }
+
+  public async update(request: Request, response: Response) {
+    const { subtitle, image_public_id } = request.body
+    const { id } = request.params
+
+    const publication = await UpdatePublicationService.execute({
+      subtitle,
+      id,
+      image_public_id,
+      image_path: request.file?.path || null
+    })
+
+    return response.status(200).json(publication)
   }
 }
 

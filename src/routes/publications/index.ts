@@ -11,5 +11,11 @@ publicationsRoute.post(
   upload.single('image'),
   PublicationController.store
 )
+publicationsRoute.patch(
+  '/publications/:id',
+  auth,
+  upload.single('image'),
+  PublicationController.update
+)
 
 export default publicationsRoute

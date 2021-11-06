@@ -18,6 +18,7 @@ class ListPublicationsService {
             name: true
           }
         },
+        id: true,
         subtitle: true,
         image_url: true,
         image_public_id: true

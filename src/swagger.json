@@ -205,7 +205,7 @@
         "description": "Update the profile picture",
         "requestBody": {
           "content": {
-            "multipart/form-data": {
+            "multipart/formData": {
               "schema": {
                 "properties": {
                   "avatar": {
@@ -295,6 +295,48 @@
         },
         "security": [{ "bearerAuth": [] }],
         "summary": "Create a publication",
+        "tags": ["Publication"]
+      },
+      "patch": {
+        "description": "Update a publication image or subtitle",
+        "parameters": [
+          {
+            "description": "The publication id that will be updated",
+            "example": "/publications/a53a8ac3-7c98-4480-bc2c-e308304cf0c1",
+            "in": "route",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/formData": {
+              "schema": {
+                "properties": {
+                  "subtitle": {
+                    "description": "The publication subtitle",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "image": {
+                    "description": "The blob of the new publication image",
+                    "format": "binary",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "image_public_id": {
+                    "description": "The current publication image public id to be removed from cloud",
+                    "required": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Update a publication",
         "tags": ["Publication"]
       }
     },
