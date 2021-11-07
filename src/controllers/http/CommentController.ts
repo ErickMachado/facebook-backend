@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { CreateCommentService } from '@/services/comment'
+import { CreateCommentService, UpdateCommentService } from '@/services/comment'
 import { IBaseController } from '@/@types/controller'
 
 class CommentController implements IBaseController {
@@ -14,6 +14,18 @@ class CommentController implements IBaseController {
     })
 
     return response.status(201).json(comment)
+  }
+
+  public async update(request: Request, response: Response) {
+    const { id } = request.params
+    const { text } = request.body
+
+    const updatedComment = await UpdateCommentService.execute({
+      comment_id: id,
+      text
+    })
+
+    return response.status(200).json(updatedComment)
   }
 }
 

@@ -43,6 +43,7 @@ class FindOneProfileService {
                 },
                 author_id: true,
                 created_at: true,
+                id: true,
                 text: true
               },
               orderBy: {

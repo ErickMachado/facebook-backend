@@ -404,6 +404,36 @@
         "security": [{ "bearerAuth": [] }],
         "summary": "Create a new comment",
         "tags": ["Comment"]
+      },
+      "patch": {
+        "description": "Update a comment",
+        "parameters": [
+          {
+            "description": "The comment uuid",
+            "in": "route",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "text": {
+                    "description": "The text that will be updated",
+                    "required": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Update a comment",
+        "tags": ["Comment"]
       }
     },
     "/search": {

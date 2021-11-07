@@ -32,6 +32,7 @@ class ListPublicationsService {
               }
             },
             author_id: true,
+            id: true,
             created_at: true,
             text: true
           },
