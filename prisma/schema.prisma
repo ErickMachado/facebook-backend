@@ -18,6 +18,7 @@ model Profile {
   password     String
   verified     DateTime?
   publications Publication[]
+  comments     Comment[]
   created_at   DateTime      @default(now())
   updated_at   DateTime      @default(now())
 
@@ -37,14 +38,28 @@ model Avatar {
 }
 
 model Publication {
-  id              String   @id @unique @default(uuid())
+  id              String    @id @unique @default(uuid())
   subtitle        String?
   image_url       String?
   image_public_id String?
-  author          Profile  @relation(fields: [author_id], references: [id], onDelete: Cascade)
+  author          Profile   @relation(fields: [author_id], references: [id], onDelete: Cascade)
   author_id       String
-  created_at      DateTime @default(now())
-  updated_at      DateTime @default(now())
+  comments        Comment[]
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @default(now())
 
   @@map("publications")
+}
+
+model Comment {
+  id             String      @id @unique @default(uuid())
+  text           String
+  publication    Publication @relation(fields: [publication_id], references: [id], onDelete: Cascade)
+  publication_id String
+  author         Profile     @relation(fields: [author_id], references: [id], onDelete: Cascade)
+  author_id      String
+  created_at     DateTime    @default(now())
+  updated_at     DateTime    @default(now())
+
+  @@map("comments")
 }

@@ -366,6 +366,46 @@
         "tags": ["Publication"]
       }
     },
+    "/comments": {
+      "post": {
+        "description": "Create a new comment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "publication_id": {
+                    "description": "The publication that the new comment will belong",
+                    "format": "uuid",
+                    "required": true,
+                    "type": "string"
+                  },
+                  "text": {
+                    "description": "The comment text",
+                    "required": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [{ "bearerAuth": [] }],
+        "summary": "Create a new comment",
+        "tags": ["Comment"]
+      }
+    },
     "/search": {
       "get": {
         "description": "Get profiles list that matches with the search",

@@ -18,6 +18,27 @@ class ListPublicationsService {
             name: true
           }
         },
+        comments: {
+          select: {
+            author: {
+              select: {
+                avatar: {
+                  select: {
+                    url: true
+                  }
+                },
+                id: true,
+                name: true
+              }
+            },
+            author_id: true,
+            created_at: true,
+            text: true
+          },
+          orderBy: {
+            created_at: 'asc'
+          }
+        },
         id: true,
         subtitle: true,
         image_url: true,

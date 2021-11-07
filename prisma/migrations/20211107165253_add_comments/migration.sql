@@ -39,6 +39,18 @@ CREATE TABLE "publications" (
     CONSTRAINT "publications_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "comments" (
+    "id" TEXT NOT NULL,
+    "text" TEXT NOT NULL,
+    "publication_id" TEXT NOT NULL,
+    "author_id" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "comments_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "profiles_id_key" ON "profiles"("id");
 
@@ -60,8 +72,17 @@ CREATE UNIQUE INDEX "avatars_profile_id_key" ON "avatars"("profile_id");
 -- CreateIndex
 CREATE UNIQUE INDEX "publications_id_key" ON "publications"("id");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "comments_id_key" ON "comments"("id");
+
 -- AddForeignKey
 ALTER TABLE "avatars" ADD CONSTRAINT "avatars_profile_id_fkey" FOREIGN KEY ("profile_id") REFERENCES "profiles"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "publications" ADD CONSTRAINT "publications_author_id_fkey" FOREIGN KEY ("author_id") REFERENCES "profiles"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "comments" ADD CONSTRAINT "comments_publication_id_fkey" FOREIGN KEY ("publication_id") REFERENCES "publications"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "comments" ADD CONSTRAINT "comments_author_id_fkey" FOREIGN KEY ("author_id") REFERENCES "profiles"("id") ON DELETE CASCADE ON UPDATE CASCADE;

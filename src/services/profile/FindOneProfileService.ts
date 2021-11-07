@@ -28,6 +28,27 @@ class FindOneProfileService {
                 name: true
               }
             },
+            comments: {
+              select: {
+                author: {
+                  select: {
+                    avatar: {
+                      select: {
+                        url: true
+                      }
+                    },
+                    id: true,
+                    name: true
+                  }
+                },
+                author_id: true,
+                created_at: true,
+                text: true
+              },
+              orderBy: {
+                created_at: 'asc'
+              }
+            },
             created_at: true,
             image_url: true,
             subtitle: true
