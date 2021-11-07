@@ -1,8 +1,20 @@
 import { Request, Response } from 'express'
-import { CreateCommentService, UpdateCommentService } from '@/services/comment'
+import {
+  CreateCommentService,
+  DeleteCommentService,
+  UpdateCommentService
+} from '@/services/comment'
 import { IBaseController } from '@/@types/controller'
 
 class CommentController implements IBaseController {
+  public async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    await DeleteCommentService.execute(id)
+
+    return response.sendStatus(200)
+  }
+
   public async store(request: Request, response: Response) {
     const { profile_id } = request
     const { publication_id, text } = request.body
