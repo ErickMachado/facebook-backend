@@ -17,5 +17,10 @@ publicationsRoute.patch(
   upload.single('image'),
   PublicationController.update
 )
+publicationsRoute.delete(
+  '/publications/:id',
+  auth,
+  PublicationController.delete
+)
 
 export default publicationsRoute

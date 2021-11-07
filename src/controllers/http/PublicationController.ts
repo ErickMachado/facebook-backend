@@ -1,12 +1,21 @@
 import { Request, Response } from 'express'
 import { IBaseController } from '@/@types/controller'
 import {
-  CreatePublicationService,
   ListPublicationsService,
-  UpdatePublicationService
+  CreatePublicationService,
+  UpdatePublicationService,
+  DeletePublicationService
 } from '@/services/publications'
 
 class PublicationController implements IBaseController {
+  public async delete(request: Request, response: Response) {
+    const { id } = request.params
+
+    await DeletePublicationService.execute(id)
+
+    return response.sendStatus(200)
+  }
+
   public async index(request: Request, response: Response) {
     const publications = await ListPublicationsService.execute()
 
