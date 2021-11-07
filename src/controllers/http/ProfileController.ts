@@ -17,9 +17,9 @@ class ProfileController implements IBaseController {
   }
 
   public async show(request: Request, response: Response) {
-    const { id } = request.params
+    const { username } = request.params
 
-    const profile = await FindOneProfileService.execute(id)
+    const profile = await FindOneProfileService.execute(username)
 
     return response.status(200).json(profile)
   }

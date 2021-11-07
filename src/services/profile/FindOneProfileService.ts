@@ -2,7 +2,7 @@ import { APIError } from '@/errors/APIError'
 import { prisma } from '@/prisma'
 
 class FindOneProfileService {
-  public async execute(profile_id: string) {
+  public async execute(username: string) {
     const profile = await prisma.profile.findFirst({
       select: {
         avatar: {
@@ -56,7 +56,7 @@ class FindOneProfileService {
         },
         username: true
       },
-      where: { id: profile_id }
+      where: { username }
     })
 
     if (!profile) throw new APIError('Profile does not exists', 404)
