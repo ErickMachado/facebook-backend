@@ -24,16 +24,22 @@
 - [Prisma](https://www.prisma.io/)
 - [Express](https://expressjs.com/pt-br/)
 
-# How to run the application
+# :arrow_forward: How to run the application
 
-1. Download [docker](https://docker.com)
+1. First things first. Download [docker](https://docker.com). If you are using Linux, you'll need to download docker compose too.
 2. Clone this repository with:
 
-```
-bash
-
+```bash
 cd ~ && git clone git@github.com:ErickMachado/facebook-backend.git
 ```
+
+3. Now run the following command to init the application:
+
+```bash
+cd ~/facebook-backend && docker-compose up --force-recreate --build -d
+```
+
+4. That's it. Your own Facebook API is now running. :tada: You can access the API doc through `http://localhost:3333/docs`
 
 # :memo: License
 
