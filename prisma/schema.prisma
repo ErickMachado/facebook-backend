@@ -19,6 +19,7 @@ model Profile {
   verified     DateTime?
   publications Publication[]
   comments     Comment[]
+  likes        Like[]
   created_at   DateTime      @default(now())
   updated_at   DateTime      @default(now())
 
@@ -45,6 +46,7 @@ model Publication {
   author          Profile   @relation(fields: [author_id], references: [id], onDelete: Cascade)
   author_id       String
   comments        Comment[]
+  likes           Like[]
   created_at      DateTime  @default(now())
   updated_at      DateTime  @default(now())
 
@@ -62,4 +64,14 @@ model Comment {
   updated_at     DateTime    @default(now())
 
   @@map("comments")
+}
+
+model Like {
+  id             String      @id @unique @default(uuid())
+  publication    Publication @relation(fields: [publication_id], references: [id], onDelete: Cascade)
+  publication_id String
+  author         Profile     @relation(fields: [author_id], references: [id], onDelete: Cascade)
+  author_id      String
+
+  @@map("likes")
 }

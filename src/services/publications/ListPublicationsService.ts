@@ -41,6 +41,7 @@ class ListPublicationsService {
           }
         },
         id: true,
+        likes: true,
         subtitle: true,
         image_url: true,
         image_public_id: true

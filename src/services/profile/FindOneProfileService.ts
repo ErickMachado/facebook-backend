@@ -52,6 +52,7 @@ class FindOneProfileService {
             },
             created_at: true,
             image_url: true,
+            likes: true,
             subtitle: true
           }
         },
