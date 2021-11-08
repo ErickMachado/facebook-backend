@@ -24,6 +24,17 @@
 - [Prisma](https://www.prisma.io/)
 - [Express](https://expressjs.com/pt-br/)
 
+# How to run the application
+
+1. Download [docker](https://docker.com)
+2. Clone this repository with:
+
+```
+bash
+
+cd ~ && git clone git@github.com:ErickMachado/facebook-backend.git
+```
+
 # :memo: License
 
 This project is under the MIT license. See the [LICENSE](https://opensource.org/licenses/MIT) for more information.
