@@ -1,5 +1,5 @@
 export { default as ProfileController } from './ProfileController'
-export { default as SignInController } from './SignInController'
+export { default as AuthController } from './AuthController'
 export { default as AvatarController } from './AvatarController'
 export { default as PublicationController } from './PublicationController'
 export { default as SearchController } from './SearchController'

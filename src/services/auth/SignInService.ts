@@ -40,7 +40,6 @@ class SignInService {
         email: true,
         id: true,
         name: true,
-        publications: true,
         username: true
       },
       where: { email }

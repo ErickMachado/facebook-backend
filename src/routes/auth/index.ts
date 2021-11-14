@@ -1,8 +1,9 @@
 import { Router } from 'express'
-import { SignInController } from '@/controllers/http'
+import { AuthController } from '@/controllers/http'
 
 const profilesRoute = Router()
 
-profilesRoute.post('/auth', SignInController.store)
+profilesRoute.get('/auth', AuthController.show)
+profilesRoute.post('/auth', AuthController.store)
 
 export default profilesRoute
