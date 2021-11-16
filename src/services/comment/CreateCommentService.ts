@@ -36,11 +36,13 @@ class CreateCommentService {
               select: {
                 url: true
               }
-            }
+            },
+            name: true
           }
         },
         created_at: true,
         id: true,
+        publication_id: true,
         text: true
       }
     })

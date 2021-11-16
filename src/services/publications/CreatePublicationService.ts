@@ -26,6 +26,25 @@ class CreatePublicationService {
         data: {
           subtitle,
           author_id: profile_id
+        },
+        select: {
+          author: {
+            select: {
+              avatar: {
+                select: {
+                  url: true
+                }
+              },
+              id: true,
+              name: true
+            }
+          },
+          created_at: true,
+          comments: true,
+          image_url: true,
+          image_public_id: true,
+          likes: true,
+          subtitle: true
         }
       })
 

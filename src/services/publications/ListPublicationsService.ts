@@ -40,6 +40,7 @@ class ListPublicationsService {
             created_at: 'asc'
           }
         },
+        created_at: true,
         id: true,
         likes: true,
         subtitle: true,

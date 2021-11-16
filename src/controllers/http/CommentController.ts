@@ -10,9 +10,9 @@ class CommentController implements IBaseController {
   public async delete(request: Request, response: Response) {
     const { id } = request.params
 
-    await DeleteCommentService.execute(id)
+    const comment = await DeleteCommentService.execute(id)
 
-    return response.sendStatus(200)
+    return response.status(200).json(comment)
   }
 
   public async store(request: Request, response: Response) {
